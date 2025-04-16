@@ -11,5 +11,37 @@
     </div>
 </template>
 <script setup>
+    const rtConfig = useRuntimeConfig()
     const { menuItem } = useMenu()
+    useHead({
+        title: "Blog System",
+        meta: [
+            { name:"description" , content: "blog system is have anythink anywhere." },
+            { property: 'og:description', content: "blog system is have anythink anywhere." },
+            { property: 'og:title', content: "Blog System" },
+            { property: 'og:image', content: "/favicon.ico" },
+            { property: 'og:url', content: rtConfig.public.APP_URL },
+            { property: 'og:type', content: "website" },
+            { name: 'twitter:card', content: 'summary_large_image' },
+            { name: 'twitter:title', content: "Blog System" },
+            { name: 'twitter:description', content: "blog system is have anythink anywhere." },
+            { name: 'twitter:image', content: "/favicon.ico" }
+        ],
+        script: [
+            {
+            type: 'application/ld+json',
+            children: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'BlogPosting',
+                headline: "Blog System",
+                image: ["/favicon.ico"],
+                datePublished: "15-04-2025",
+                author: {
+                    '@type': 'Person',
+                    name: 'BlogSystem'
+                }
+            })
+            }
+        ]
+    })
 </script>
