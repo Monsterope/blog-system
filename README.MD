@@ -121,6 +121,20 @@ http://localhost:3000
 https://documenter.getpostman.com/view/12712632/2sB2ca6Kjq
 ```
 
+# Build production for test score (Docker) (Optional)
+- Move to path nuxt project
+```
+cd blog-system-fe
+```
+- Build docker
+```
+docker build -f Dockerfile.prod -t blog-system-fe-prod .
+```
+- run command
+```
+docker run --name blog-frontend-prod -p 3000:3000 -d blog-system-fe-prod 
+```
+
 # เริ่มต้นการใช้งานสำหรับ Admin
 - เข้าไปที่ link เพื่อทำการ login
 ```
