@@ -12,7 +12,7 @@ class CreateUserAdminCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'blog:create-user-admin-command {--email=} --{--password=} --{--name=}';
+    protected $signature = 'blog:create-user-admin-command {--email=} {--password=} {--name=}';
 
     /**
      * The console command description.
@@ -34,11 +34,13 @@ class CreateUserAdminCommand extends Command
             $this->info('please check arg option.');
         }
 
-        User::create([
+        $user = [
             "email" => $email,
-            "password" => $password,
+            "password" => bcrypt($password),
             "name" => $name
-         ]);
+        ];
+
+        User::create($user);
         
     }
 }

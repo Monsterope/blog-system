@@ -10,6 +10,7 @@
 - NODE: 20
 - Database: MYSQL
 - Docker (Optional)
+- Redis (Optional)
 
 # Start step
 
@@ -23,7 +24,7 @@ git clone <url>
 cd blog-system
 ```
 
-## Docker Compone (Optional)
+## Docker Compose (Optional)
 
 - Copy enviorment
 ```
@@ -34,8 +35,17 @@ cp .env.example .env
 MYSQL_ROOT_PASSWORD={current-yourself}
 MYSQL_DATABASE={current-yourself}
 ```
+- run docker compose
 ```
-docker-compone up -d
+docker-compose up -d
+```
+- (Optional) add data default
+```
+docker-compose exec backend-laravel-php bash
+```
+- (Optional) after exec docker-compone seed data for user admin and blog example
+```
+php artisan db:seed
 ```
 
 # Laravel
@@ -86,6 +96,11 @@ php artisan serve
 - Try
 ```
 http://localhost:8000
+```
+
+- (Optional) หากต้องการเพิ่ม user ที่สถานะเป็น admin ให้รันคำสั่งตามนี้
+```
+php artisan blog:create-user-admin-command --email=<string> --password=<string> --name=<string>
 ```
 
 # Nuxt 3
@@ -140,11 +155,12 @@ docker run --name blog-frontend-prod -p 3000:3000 -d blog-system-fe-prod
 ```
 http://localhost:3000/login
 ```
-- กรอก email และ password
+- email
 ```
 admin@admin.com
 ```
+- password
 ```
 admin1234
 ```
-- จะเป็นการเข้าหน้า admin เพื่อ CRUD
+- หลังจาก Login จะเป็นการเข้าหน้าจัดการสำหรับ admin เพื่อทำการ ดู/เพิ่ม/ลบ/แก้ไข
