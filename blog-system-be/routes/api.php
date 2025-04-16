@@ -5,9 +5,9 @@ use App\Http\Controllers\BlogController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get("/", function(){
-    return config("database");
-});
+// Route::get("/", function(){
+//     return config("database");
+// });
 Route::post("/login", [AuthController::class, "Login"]);
 Route::post("/register", [AuthController::class, "Register"]);
 Route::resource("blogs", BlogController::class)->only(['index']);
